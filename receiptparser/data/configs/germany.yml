@@ -1,4 +1,4 @@
-language: deu # As accepted by pytesseract, e.g. "eng+deu"
+language: eng # As accepted by pytesseract, e.g. "eng+deu"
 
 # Can contain company locations for fuzzy parsing
 companys:
