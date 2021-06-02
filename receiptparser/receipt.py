@@ -125,7 +125,6 @@ class Receipt(object):
         """
         :return: str
         """
-
         for sum_key in self.config.sum_keys:
             sum_line = self.fuzzy_find(sum_key, 0.9)
             if sum_line:
