@@ -1,15 +1,17 @@
-language: deu # As accepted by pytesseract, e.g. "eng+deu"
+language: eng # As accepted by pytesseract, e.g. "eng+deu"
 
 # Can contain company locations for fuzzy parsing
 companys:
-  Aldi:
-    - aldi
-  Bauhaus:
-    - bauhaus
-  Colruyt:
-    - colruyt
-  Delhaize:
-    - delhaize
+  Apple:
+    - apple
+  Adidas:
+    - adidas
+  Nike:
+    - nike
+  Cat:
+    - cat
+  Dog:
+    - dog
   Deutsche Post:
     - deutsche post
   Drogerie:
@@ -54,24 +56,29 @@ companys:
     - zapfpunkt
     - zapfstelle
     - zapfsäule
-    GREEN FIELD:
-    - Green Field
 
 # Sum keys roughly ordered by likelyhood.
 sum_keys:
-  - summe
-  - gesamtbetrag
-  - gesamt
   - total
   - sum
-  - zwischensumme
-  - bar
-  - te betalen
+  - fee
+  - due
+
 
 formats:
-  sum: '\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}'
+  # 
+  sum: '\$?\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}'
+  # 11.00 # [] is one character # ? 有冇都得 # . 咩都得 # \s 
+  # 11,00 
+  # 11@01
 
-  # Matches dates like 19.08.15 and 19. 08. 2015
-  date: '\b([0123]?\d\s?\.\s?[01]?\d\s?\.\s?(?:20)?\d\d)\b'
+  # Matches dates like 19.08.15 and 19. 08. 2015  , 19/08/15 and 19/ 08/ 2015  
+  #date: '\b([0123]?\d\s?\.\s?[01]?\d\s?\.\s?(?:20)?\d\d)\b|\b([0123]?\d\s?\/\s?[01]?\d\s?\/\s?(?:20)?\d\d)\b'
+  date: (0[1-9]|[1-9]|1[0-2])[/.\ ](\d|0\d|1\d|2\d|3[01])[/.\ ](20)?\d{2}|(\d|0\d|1\d|2\d|3[01])[/.\ ](0[1-9]|[1-9]|1[0-2])[/.\ ](20)?\d{2}
 
+  #(0[1-9]|[1-9]|1[0-2])[/.\ ](\d|0\d|1\d|2\d|3[01])[/.\ ](20)?\d{2}
+  #12 20 2095
+  #月 日  年
+
+  #
   postal_code: '\b(\d{5})\s+[a-z]'
