@@ -72,11 +72,11 @@ def process_receipt(config, filename, out_dir=None, verbosity=0):
         print("Performing scan on", filename)
     receipt = _process_receipt(config, filename, out_dir)
 
-    if not receipt.is_complete():
-        if verbosity > 0:
-            print("Performing OCR scan with sharpening", filename)
-        receipt2 = _process_receipt(config, filename, sharpen=True)
-        receipt.merge(receipt2)
+    # if not receipt.is_complete():
+    #     if verbosity > 0:
+    #         print("Performing OCR scan with sharpening", filename)
+    #     receipt2 = _process_receipt(config, filename, sharpen=True)
+    #     receipt.merge(receipt2)
 
     return receipt
 
