@@ -88,7 +88,7 @@ for filename in filenames:
         print("  Date:       ", receipt.date)
         print("  Amount:     ", receipt.sum)
 
-    print(options.format.format(**receipt.for_format_string()))
+    # print(options.format.format(**receipt.for_format_string()))
 
     receipts.append(receipt)
 

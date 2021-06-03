@@ -70,7 +70,7 @@ class Receipt(object):
         #output a new file
         image = cv2.imread(self.filename)
         h, w, _ = image.shape
-        print(image.shape)
+        print(self.date)
         # GrayImage=cv2.cvtColor(image ,cv2.COLOR_BGR2GRAY)
         # threshold_img = cv2.threshold(GrayImage, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
         # dst = cv.fastNlMeansDenoisingColored(image,None,10,10,7,21)
@@ -80,7 +80,7 @@ class Receipt(object):
         total_boxes = len(details['text'])
         for sequence_number in range(total_boxes):
             if int(details['conf'][sequence_number]) >25:
-                if details['text'][sequence_number]==self.date or details['text'][sequence_number]==self.sum or details['text'][sequence_number]==self.postal:
+                if details['text'][sequence_number]==str(self.date) or details['text'][sequence_number]==self.sum or details['text'][sequence_number]==self.postal:
                     (x, y, w, h) = (details['left'][sequence_number], details['top'][sequence_number], details['width'][sequence_number],  details['height'][sequence_number])
                     threshold_img = cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
         cv2.imwrite("image_2.png", threshold_img)
@@ -129,7 +129,6 @@ class Receipt(object):
         :return: date
             Parses data
         """
-
         for line in self.lines:
             match = re.search(self.config.formats.date, line, re.I)
             if match:

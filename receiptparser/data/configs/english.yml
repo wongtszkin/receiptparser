@@ -59,6 +59,7 @@ companys:
 
 # Sum keys roughly ordered by likelyhood.
 sum_keys:
+  - sub total
   - total
   - sum
   - fee
@@ -67,7 +68,8 @@ sum_keys:
 
 formats:
   # 
-  sum: '\$?\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}'
+  sum: '\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}'
+  #\$?
   # 11.00 # [] is one character # ? 有冇都得 # . 咩都得 # \s 
   # 11,00 
   # 11@01
